@@ -19,10 +19,12 @@ node  {
             * Second, the 'latest' tag.
             * Pushing multiple tags is cheap, as all the layers are reused. */
             docker.withRegistry('https://359380031409.dkr.ecr.ap-southeast-1.amazonaws.com', 'ecr:ap-southeast-1:AWS-Credentials') {
-            /* docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') { */
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
            }
+        }
+        stage('AUTO-RUN') {
+            sh 'docker run -d -p 80:80 359380031409.dkr.ecr.ap-southeast-1.amazonaws.com/jenkins-test:latest'
         }
         stage('REMOVE') {
             sh 'docker rmi -f 359380031409.dkr.ecr.ap-southeast-1.amazonaws.com/jenkins-test'
