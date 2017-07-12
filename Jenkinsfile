@@ -24,6 +24,7 @@ node  {
            }
         }
         stage('AUTO-RUN') {
+            sh 'docker stop 359380031409.dkr.ecr.ap-southeast-1.amazonaws.com/jenkins-test:latest'
             sh 'docker run -d -p 80:80 359380031409.dkr.ecr.ap-southeast-1.amazonaws.com/jenkins-test:latest'
         }
         stage('REMOVE') {
