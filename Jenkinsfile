@@ -1,6 +1,6 @@
 node  {
         def app
-        stage('BUILD') {
+        stage('BUILD-GIT') {
             checkout scm
         }
 
