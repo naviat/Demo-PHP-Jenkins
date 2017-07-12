@@ -1,4 +1,4 @@
 <?php
-// This is a one-line c++ style comment
+// This is a one-line comment
 phpinfo();
 ?>
